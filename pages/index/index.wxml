@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}"  bindgetuserinfo="getUserInfo"> 获取头像昵称      </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="section">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{userArray}}">
+      <view class="picker">
+        请选择职位： {{userArray==null ?"点击我":userArray[index]}}
+      </view>
+    </picker>
+  </view>
+  <view class="btn-bottom">
+
+    <button class="btn" type="primary" bindtap='bindIdConfirm'>
+    身份确认
+    </button>
+  </view>
+</view>
