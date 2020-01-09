@@ -1,4 +1,7 @@
 //logs.js
+/**
+ * This is test.
+ */
 const util = require('../../utils/util.js')
 
 Page({

@@ -1,9 +1,43 @@
 
 
+var newLogin = function(that) {
+
+  wx.login({
+    success: function (res) {
+      console.log(res.code)
+      if(res.code) {
+        wx.request({
+          //后台接口地址
+          url: 'https://www.vtuanba.cn/wx/login',
+          data: {
+            code: res.code,
+          },
+          method: 'GET',
+          header: {
+            'content-type': 'application/json'
+          },
+          success: function (res) {
+            // this.globalData.userInfo = JSON.parse(res.data);
+            console.log(res.data);
+            /*
+            that.setData({
+              nickName: res.data.nickName,
+              avatarUrl: res.data.avatarUrl,
+              openId: res.data.openId
+            })*/
+            wx.setStorageSync('openId', res.data.openId);
+            
+          }
+        })
+      }
+    }
+    
+  })
+}
+
 var login = function(that) {
   var openId = (wx.getStorageSync('openId'));
   console.log("openid " + openId);
-  
   if (openId) {
     wx.getUserInfo({
       success: function (res) {
@@ -124,5 +158,6 @@ globalData: {
 }
 
 module.exports = {
-  login: login
+  login: login,
+  newlogin: newLogin
 }

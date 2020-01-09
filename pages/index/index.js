@@ -24,7 +24,7 @@ Page({
     })
   },
   onLoad: function () {
-    wxlogin.login(this); 
+    //wxlogin.login(this); 
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
