@@ -3,15 +3,7 @@
 const app = getApp()
 var  wxlogin = require("../../utils/login.js");
 var  serverinfomgr = require("../../utils/serverinfomgr.js")
-var  HTTP_PORT = 80;
-var  HTTP_PORT_DEV = 8080;
-
-var HTTPS_PORT = 443;
-var HTTPS_PORT_DEV = 446;
-
-
-var http_port = HTTP_PORT_DEV;
-var https_port = HTTPS_PORT_DEV;
+var  utils  = require("../../utils/util.js");
 Page({
   data: {
     motto: 'Hello World',
@@ -71,7 +63,7 @@ Page({
   getUserType: function() {
     var _this = this;
     wx.request({
-      url: 'https://www.vtuanba.cn:' + https_port +'/users',
+      url: 'https://www.vtuanba.cn:' + utils.https_port +'/users',
       success: function(res) {
         
         var tempArray = new Array();
